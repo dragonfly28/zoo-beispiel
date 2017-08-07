@@ -17,3 +17,4 @@ Dies ist eine exemplarische Anwendung für die Referenzarchitektur.
 ## Ressources
 * https://spring.io/guides/gs/rest-hateoas/
 * http://projects.spring.io/spring-data-rest/
+* https://spring.io/guides/tutorials/bookmarks/
