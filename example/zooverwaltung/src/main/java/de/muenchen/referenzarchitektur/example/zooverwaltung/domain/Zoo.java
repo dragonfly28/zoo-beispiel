@@ -1,10 +1,8 @@
 package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import javax.persistence.CascadeType;
-import javax.validation.constraints.NotNull;
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,6 @@ import javax.persistence.Id;
  * This class represents a Zoo.
  */
 @Entity
-@Table(name = "Zoo")
 public class Zoo {
 
     // ========= //
@@ -22,24 +19,31 @@ public class Zoo {
     // ========= //
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "zoo_name")
-    @NotNull
     private String zooName;
 
     @OneToMany(mappedBy = "zoo")
-    private java.util.List<Gehege> gehege = new java.util.ArrayList<>();
+    private Set<Gehege> gehege = new HashSet<>();
 
     /**
      * Default Constructor for zoo.
      */
     public Zoo() {
     }
+    
+    public Zoo(String zooName, Set<Gehege> gehege) {
+        this.zooName = zooName;
+        this.gehege = gehege;
+    }
 
     // =================== //
     // Getters and Setters //
     // =================== //
+    public Long getId() {
+        return id;
+    }
+    
     public String getZooName() {
         return zooName;
     }
@@ -48,11 +52,11 @@ public class Zoo {
         this.zooName = zooName;
     }
 
-    public java.util.List<Gehege> getGehege() {
+    public Set<Gehege> getGehege() {
         return gehege;
     }
 
-    public void setGehege(java.util.List<Gehege> gehege) {
+    public void setGehege(Set<Gehege> gehege) {
         this.gehege = gehege;
     }
 
@@ -99,7 +103,7 @@ public class Zoo {
     public String toString() {
         String s = "zoo";
         s += "\nString zooName: " + getZooName();
-        s += "\njava.util.List<Gehege_> gehege: " + getGehege();
+        s += "\nSet<Gehege> gehege: " + getGehege();
         return s;
     }
 }

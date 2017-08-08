@@ -1,7 +1,6 @@
 package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import javax.validation.constraints.NotNull;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.EnumType;
@@ -9,7 +8,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -24,32 +22,23 @@ public class Tier {
     // ========= //
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "gehege_id")
-    @NotNull
     private Gehege gehege;
-    
+
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "tierpfleger_id")
     private Tierpfleger pfleger;
 
-    @Column(name = "art")
-    @NotNull
     private String art;
 
-    @Column(name = "familie")
-    @NotNull
     private String familie;
 
-    @Column(name = "geschlecht")
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Sex geschlecht;
 
-    @Column(name = "rote_liste")
-    @NotNull
     private boolean roteListe;
 
     /**
@@ -61,6 +50,9 @@ public class Tier {
     // =================== //
     // Getters and Setters //
     // =================== //
+    public Long getId() {
+        return id;
+    }
 
     public Gehege getGehege() {
         return gehege;
@@ -77,8 +69,7 @@ public class Tier {
     public void setPfleger(Tierpfleger pfleger) {
         this.pfleger = pfleger;
     }
-    
-    
+
     public String getArt() {
         return art;
     }
@@ -126,10 +117,10 @@ public class Tier {
             return false;
         }
         Tier tier = (Tier) other;
-        if (getGehege()!= null ? !getGehege().equals(tier.getGehege()) : tier.getGehege() != null) {
+        if (getGehege() != null ? !getGehege().equals(tier.getGehege()) : tier.getGehege() != null) {
             return false;
         }
-        if (getPfleger()!= null ? !getPfleger().equals(tier.getPfleger()) : tier.getPfleger() != null) {
+        if (getPfleger() != null ? !getPfleger().equals(tier.getPfleger()) : tier.getPfleger() != null) {
             return false;
         }
         if (getArt() != null ? !getArt().equals(tier.getArt()) : tier.getArt() != null) {

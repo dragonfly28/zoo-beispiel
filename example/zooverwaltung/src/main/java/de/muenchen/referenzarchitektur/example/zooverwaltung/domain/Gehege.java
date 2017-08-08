@@ -1,13 +1,12 @@
 package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import javax.validation.constraints.NotNull;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -15,7 +14,6 @@ import javax.persistence.OneToMany;
  * This class represents a Gehege.
  */
 @Entity
-@Table(name = "Gehege")
 public class Gehege {
 
     // ========= //
@@ -23,19 +21,16 @@ public class Gehege {
     // ========= //
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "gehege_name")
-    @NotNull
-    private String gehegeName;
-
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "zoo_id")
-    @NotNull
     private Zoo zoo;
-    
+
     @OneToMany(mappedBy = "gehege")
-    private java.util.List<Tier> tiere = new java.util.ArrayList<>();
+    private Set<Tier> tiere = new HashSet<>();
+
+    private String gehegeName;
 
     /**
      * Default Constructor for gehege.

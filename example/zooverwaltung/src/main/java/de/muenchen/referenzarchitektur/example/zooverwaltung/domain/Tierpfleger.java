@@ -1,7 +1,7 @@
 package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import javax.validation.constraints.NotNull;
-import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.OneToMany;
@@ -21,19 +21,15 @@ public class Tierpfleger {
     // ========= //
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "vorname")
-    @NotNull
     private String vorname;
 
-    @Column(name = "nachname")
-    @NotNull
     private String nachname;
 
     @OneToMany(mappedBy = "pfleger")
-    private java.util.List<Tier> tiere = new java.util.ArrayList<>();
-    
+    private Set<Tier> tiere = new HashSet<>();
+
     /**
      * Default Constructor for tierpfleger.
      */
@@ -43,6 +39,10 @@ public class Tierpfleger {
     // =================== //
     // Getters and Setters //
     // =================== //
+    public Long getId() {
+        return id;
+    }
+
     public String getVorname() {
         return vorname;
     }
@@ -59,11 +59,11 @@ public class Tierpfleger {
         this.nachname = nachname;
     }
 
-    public java.util.List<Tier> getTiere() {
+    public Set<Tier> getTiere() {
         return tiere;
     }
 
-    public void setTiere(java.util.List<Tier> tiere) {
+    public void setTiere(Set<Tier> tiere) {
         this.tiere = tiere;
     }
 

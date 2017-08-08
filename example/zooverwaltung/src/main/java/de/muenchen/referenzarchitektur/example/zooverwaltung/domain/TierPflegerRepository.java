@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.muenchen.referenzarchitektur.example.zooverwaltung.repository;
+package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import de.muenchen.referenzarchitektur.example.zooverwaltung.domain.Tierpfleger;
 import org.springframework.data.repository.CrudRepository;
 
 /**

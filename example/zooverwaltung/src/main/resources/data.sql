@@ -21,8 +21,7 @@ INSERT INTO gehege (gehege_name, zoo_id) VALUES
 INSERT INTO tierpfleger (nachname, vorname) VALUES
   ('Kümmerer', 'Hans');
 
-INSERT INTO tier (art, familie, geschlecht, rote_liste, gehege_id, tierpfleger_id) VALUES
+INSERT INTO tier (art, familie, geschlecht, rote_liste, gehege_id, pfleger_id) VALUES
   ('Gepard', 'Katzen', 'weiblich', 'true', '2', '1'),
   ('Gepard', 'Katzen', 'männlich', 'true', '2', '1');
-
 

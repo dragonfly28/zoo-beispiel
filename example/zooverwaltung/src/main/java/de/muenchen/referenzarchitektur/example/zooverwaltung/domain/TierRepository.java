@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.muenchen.referenzarchitektur.example.zooverwaltung.repository;
+package de.muenchen.referenzarchitektur.example.zooverwaltung.domain;
 
-import de.muenchen.referenzarchitektur.example.zooverwaltung.domain.Gehege;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  */
-public interface GehegeRepository extends CrudRepository<Gehege, Long> {
+public interface TierRepository extends CrudRepository<Tier, Long> {
 
 }
-
